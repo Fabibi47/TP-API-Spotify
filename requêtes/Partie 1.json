@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "053e77cb-2463-4e52-8a62-4b5b45795ec7",
+		"name": "TP Api Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32084866"
+	},
+	"item": [
+		{
+			"name": "recherche de jul",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/search?q=jul&type=artist&limit=3&market=FR",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "jul"
+						},
+						{
+							"key": "type",
+							"value": "artist"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "market",
+							"value": "FR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "albums de jul",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/artists/3IW7ScrzXmPvZhB27hmfgy/albums",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"artists",
+						"3IW7ScrzXmPvZhB27hmfgy",
+						"albums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "C'est quand qu'il s'éteint",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/albums/1WYGwCvsfFrr7kuQcfNnJr/tracks?limit=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"albums",
+						"1WYGwCvsfFrr7kuQcfNnJr",
+						"tracks"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dans ma paranoïa",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/search?q=Dans+ma+paranoïa&type=track&limit=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Dans+ma+paranoïa"
+						},
+						{
+							"key": "type",
+							"value": "track"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SCH top tracks",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/artists/2kXKa3aAFngGz2P4GjG5w2/top-tracks?market=FR",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"artists",
+						"2kXKa3aAFngGz2P4GjG5w2",
+						"top-tracks"
+					],
+					"query": [
+						{
+							"key": "market",
+							"value": "FR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bolide allemand",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/tracks/7A1nhuX64Y2JB206h3FjBK",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"tracks",
+						"7A1nhuX64Y2JB206h3FjBK"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Les actus du jour - Hugo Décrypte",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/shows/6y1PloEyNsCNJH9vHias4T",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"shows",
+						"6y1PloEyNsCNJH9vHias4T"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trois derniers épisodes",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/shows/6y1PloEyNsCNJH9vHias4T/episodes?limit=3",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"shows",
+						"6y1PloEyNsCNJH9vHias4T",
+						"episodes"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "que le 2ème ",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/shows/6y1PloEyNsCNJH9vHias4T/episodes?limit=1&offset=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"shows",
+						"6y1PloEyNsCNJH9vHias4T",
+						"episodes"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "ID",
+			"value": "bfce16dbb17443258948881e1fde0bbb"
+		},
+		{
+			"key": "Secret",
+			"value": "fcb00668bc8c476da69c0f5db8b24530"
+		}
+	]
+}
