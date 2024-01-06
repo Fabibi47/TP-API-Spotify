@@ -1,0 +1,25 @@
+{{define "albums"}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Jul - Albums</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/style/albums.css">
+    </head>
+    <body>
+        <img href="/assets/images/jul.png">
+        <h1 class="Artiste">JUL</h1>
+        <h2 class="pageTitle">Tous les albums</h2>
+        {{for i in .}}
+            <div>
+                <div>
+                    <img href={{.Images[0].Link}}>
+                </div>
+                <h2 class="title">{{.Name}}</h2>
+                <p class="release">{{.ReleaseDate}}</p>>
+                <p class="total">{{.TracksNb}}</p>
+            </div>
+    </body>
+</html>
