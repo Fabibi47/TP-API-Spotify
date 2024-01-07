@@ -227,7 +227,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.spotify.com/v1/tracks/7A1nhuX64Y2JB206h3FjBK",
+					"raw": "https://api.spotify.com/v1/tracks/0EzNyXyU7gHzj2TN8qYThj",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -237,7 +237,7 @@
 					"path": [
 						"v1",
 						"tracks",
-						"7A1nhuX64Y2JB206h3FjBK"
+						"0EzNyXyU7gHzj2TN8qYThj"
 					]
 				}
 			},

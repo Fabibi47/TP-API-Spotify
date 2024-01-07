@@ -9,10 +9,17 @@
         <link rel="stylesheet" href="/assets/style/Bolide Allemand.css">
     </head>
     <body>
-        <h1>{{.Name}}</h1>
-        <h2>{{.Artists[0].Name}}</h2>
-        <img src={{.Album.Images[0].Link}} alt="couverture de l'album">
-        <p>{{.Album.Name}}</p>
+        <div class="track">
+            <div class="cover">
+                <img src={{.AlbumCover}} alt="couverture de l'album">
+            </div>
+            <div class="info">
+                <h1>{{.Name}}</h1>
+                <h2>{{.Artist}}</h2>
+                <p class="date">Sortie: {{.Date}}</p>
+                <p>Album: {{.Album}}</p>
+            </div>
+        </div>
     </body>
 </html>
 {{end}}

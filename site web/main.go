@@ -110,6 +110,14 @@ type AlbumData struct {
 	Nb        int
 }
 
+type TrackData struct {
+	Name       string
+	AlbumCover string
+	Date       string
+	Artist     string
+	Album      string
+}
+
 func main() {
 	temp, err := template.ParseGlob("web/templates/*.html")
 	if err != nil {
@@ -170,7 +178,7 @@ func main() {
 	})
 
 	http.HandleFunc("/track/sdm", func(w http.ResponseWriter, r *http.Request) {
-		api_url := "https://api.spotify.com/v1/tracks/7A1nhuX64Y2JB206h3FjBK"
+		api_url := "https://api.spotify.com/v1/tracks/0EzNyXyU7gHzj2TN8qYThj"
 		token := GetToken()
 		httpClient := http.Client{
 			Timeout: time.Second * 2,
@@ -198,7 +206,15 @@ func main() {
 		var decodeData Track
 		json.Unmarshal(body, &decodeData)
 
-		temp.ExecuteTemplate(w, "bolide allemand", decodeData)
+		var Track TrackData = TrackData{
+			Name:       decodeData.Name,
+			AlbumCover: decodeData.Album.Images[0].Link,
+			Date:       decodeData.Album.Release,
+			Artist:     decodeData.Artists[0].Name,
+			Album:      decodeData.Album.Name,
+		}
+
+		temp.ExecuteTemplate(w, "bolide allemand", Track)
 	})
 
 	http.ListenAndServe("localhost:8080", nil)
