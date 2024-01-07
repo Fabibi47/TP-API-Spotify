@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -17,8 +18,13 @@ type Token struct {
 }
 
 type Albums struct {
-	Href  string  `json:"href"`
-	Items []Album `json:"items"`
+	Href        string  `json:"href"`
+	Items       []Album `json:"items"`
+	Limit       int     `json:"limit"`
+	Next        string  `json:"next"`
+	Offset      int     `json:"offset"`
+	Previous    string  `json:"previous"`
+	TotalAlbums int     `json:"total"`
 }
 
 type Album struct {
@@ -97,8 +103,15 @@ type Track struct {
 	Uri        string `json:"uri"`
 }
 
+type AlbumData struct {
+	Name      string
+	ImageLink string
+	Date      string
+	Nb        int
+}
+
 func main() {
-	temp, err := template.ParseGlob("templates/*.html")
+	temp, err := template.ParseGlob("web/templates/*.html")
 	if err != nil {
 		fmt.Println("Erreur dans la récupération des templates : ", err)
 		return
@@ -110,7 +123,8 @@ func main() {
 
 	http.HandleFunc("/album/jul", func(w http.ResponseWriter, r *http.Request) {
 		api_url := "https://api.spotify.com/v1/artists/3IW7ScrzXmPvZhB27hmfgy/albums"
-		token := GetToken()
+		var token Token = GetToken()
+		fmt.Println(token)
 		httpClient := http.Client{
 			Timeout: time.Second * 2,
 		}
@@ -121,6 +135,7 @@ func main() {
 		}
 
 		req.Header.Add("Authorization", token.TokenType+" "+token.AccessToken)
+		fmt.Println(req.Header)
 
 		res, errRes := httpClient.Do(req)
 		if res.Body != nil {
@@ -137,7 +152,21 @@ func main() {
 		var decodeData Albums
 		json.Unmarshal(body, &decodeData)
 
-		temp.ExecuteTemplate(w, "albums", decodeData)
+		var Data = []AlbumData{}
+
+		for i := 0; i < len(decodeData.Items); i++ {
+			data := AlbumData{
+				Name:      decodeData.Items[i].Name,
+				ImageLink: decodeData.Items[i].Images[0].Link,
+				Date:      decodeData.Items[i].ReleaseDate,
+				Nb:        decodeData.Items[i].TracksNb,
+			}
+			Data = append(Data, data)
+		}
+
+		fmt.Println(Data)
+
+		temp.ExecuteTemplate(w, "albums", Data)
 	})
 
 	http.HandleFunc("/track/sdm", func(w http.ResponseWriter, r *http.Request) {
@@ -169,22 +198,32 @@ func main() {
 		var decodeData Track
 		json.Unmarshal(body, &decodeData)
 
-		temp.ExecuteTemplate(w, "bolide alemand", decodeData)
+		temp.ExecuteTemplate(w, "bolide allemand", decodeData)
 	})
 
 	http.ListenAndServe("localhost:8080", nil)
 }
 
 func GetToken() Token {
+	/*
+		Demande un Token d'accès à l'api Spotify.
+		Retourne le-dit token.
+		Un nouveau token est demandé à chaque ouverture de page
+		pour éviter qu'il expire.
+	*/
 	api_url := "https://accounts.spotify.com/api/token"
 	httpClient := http.Client{
 		Timeout: time.Second * 2,
 	}
 
-	req, errReq := http.NewRequest(http.MethodGet, api_url, nil)
+	reqBody := strings.NewReader("grant_type=client_credentials&client_id=bfce16dbb17443258948881e1fde0bbb&client_secret=fcb00668bc8c476da69c0f5db8b24530")
+
+	req, errReq := http.NewRequest(http.MethodPost, api_url, reqBody)
 	if errReq != nil {
 		fmt.Println("Erreur dans la requête d'obtention de token : ", errReq.Error())
 	}
+
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
 	res, errRes := httpClient.Do(req)
 	if res.Body != nil {

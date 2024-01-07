@@ -1,0 +1,18 @@
+{{define "bolide allemand"}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SDM - Bolide Allemand</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/assets/style/Bolide Allemand.css">
+    </head>
+    <body>
+        <h1>{{.Name}}</h1>
+        <h2>{{.Artists[0].Name}}</h2>
+        <img src={{.Album.Images[0].Link}} alt="couverture de l'album">
+        <p>{{.Album.Name}}</p>
+    </body>
+</html>
+{{end}}

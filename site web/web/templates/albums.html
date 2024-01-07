@@ -9,17 +9,23 @@
         <link rel="stylesheet" href="/assets/style/albums.css">
     </head>
     <body>
-        <img href="/assets/images/jul.png">
-        <h1 class="Artiste">JUL</h1>
+        <div class="Artist">
+            <img src="/assets/images/jul.png" alt="photo de Jul" class="profile">
+            <h1>JUL</h1>
+        </div>
         <h2 class="pageTitle">Tous les albums</h2>
-        {{for i in .}}
-            <div>
+        {{range .}}
+            <div class="album">
                 <div>
-                    <img href={{.Images[0].Link}}>
+                    <img src={{.ImageLink}} alt="couverture de l'album" style="width:35%;margin-bottom:0%;">
                 </div>
-                <h2 class="title">{{.Name}}</h2>
-                <p class="release">{{.ReleaseDate}}</p>>
-                <p class="total">{{.TracksNb}}</p>
+                <div class="info">
+                    <h2 class="title">{{.Name}}</h2>
+                    <p class="total">Nombre de musiques: {{.Nb}}</p>
+                    <p class="release">Sortie: {{.Date}}</p>
+                </div>
             </div>
+        {{end}}
     </body>
 </html>
+{{end}}

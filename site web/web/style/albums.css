@@ -1,0 +1,39 @@
+body {
+    background-color: #000000;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #aeaeae
+}
+
+.album{
+    width: 80vw;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #303030;
+    display: flex;
+    flex-direction: row;
+    background-color: #525151;
+    padding-left: 10%;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+.Artist{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile{
+    height: 50%;
+    width: 50%;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+.release{
+    color: #313131;
+}
